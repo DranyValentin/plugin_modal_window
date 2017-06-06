@@ -5,7 +5,7 @@ function showModal(event)
     var $divWrapper = document.createElement('div')
         $divWrapper.classList.add('modal_wrapper')
     var $h3 = document.createElement('h3')
-        $h3.textContent = 'Congratulation! You are open modal window.'
+        $h3.textContent = 'Congratulation! You have opened modal window.'
 
     $divWrapper.appendChild($h3)
     $divModal.appendChild($divWrapper)
