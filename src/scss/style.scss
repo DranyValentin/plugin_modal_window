@@ -1,0 +1,77 @@
+@mixin before() {
+    content: '';
+    display: block;
+
+    width: 100%;
+    height: 2px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    background: #494949;
+}
+
+.container_popup
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    overflow: hidden;
+    overflow-y: auto;
+
+    background: rgba(0,0,0,0.5);
+
+    z-index: 999999;
+}
+
+.popup
+{
+    max-width: 400px;
+    width: 100%;
+
+    position: relative;
+
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #333;
+
+    padding: 10px 20px;
+    margin: 50px auto 0;
+
+    &__btn_close {
+        width: 23px;
+        height: 23px;
+        
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        
+        margin: 0;
+
+        cursor: pointer;
+
+        span{
+            position: absolute;
+            background-color: transparent;
+            height: 100%;
+            width: 100%;
+            transition: all .5s 0s;
+            
+            &:before{
+                @include before;
+                
+                transform: translate(-50%, -50%) rotate(52deg);
+            }
+            
+            &:after{
+                @include before;
+                
+                transform: translate(-50%, -50%) rotate(-52deg);
+            }  
+        }
+    }
+}
