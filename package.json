@@ -1,6 +1,6 @@
 {
   "name": "sm-simple-popup",
-  "version": "1.0.11",
+  "version": "1.0.1112",
   "description": "",
   "private": false,
   "scripts": {
@@ -41,8 +41,9 @@
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
+    "extract-loader": "^3.0.0",
+    "file-loader": "^2.0.0",
     "lodash": "^4.17.11",
     "papaparse": "^4.6.2"
-
   }
 }

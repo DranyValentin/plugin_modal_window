@@ -3,9 +3,10 @@ const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
-  entry: {
-  	app: './src/index.js'
-  },
+  entry: 
+  	{app: ['./src/index.js',
+     './src/scss/style.scss']
+   },
   devtool: 'source-map',
   devServer: {
   	hot: true,
@@ -24,15 +25,33 @@ module.exports = {
   		{
   			test: /\.scss$/,
   			use: [
-  				'style-loader',
-  				'css-loader',
-  				"sass-loader"
+          {
+            loader: "file-loader",
+            options: {
+              name: 'css/[name].css'
+            }
+          },
+          {
+            loader: 'extract-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: "sass-loader",
+          }
   			]
   		},
       { 
         test: /\.js$/, 
-        exclude: /node_modules/, 
-        loader: "babel-loader" 
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: 'js/[name].js'
+            }
+          }
+        ]
       }
   	]
   }
