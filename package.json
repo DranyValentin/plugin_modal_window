@@ -1,8 +1,9 @@
 {
   "name": "sm-simple-popup",
-  "version": "1.0.1113",
+  "version": "1.0.1114",
   "description": "",
   "private": false,
+  "main": "dist/popup.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
@@ -14,8 +15,14 @@
     "type": "git",
     "url": "git+https://github.com/DranyValentin/plugin_modal_window.git"
   },
-  "keywords": [],
-  "author": "",
+  "title": "Popup",
+  "version": "1.0.1111",
+  "keywords": [
+    "popup",
+    "alert",
+    "modal",
+    "window"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/DranyValentin/plugin_modal_window/issues"
