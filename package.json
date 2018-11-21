@@ -3,7 +3,7 @@
   "version": "1.0.1114",
   "description": "",
   "private": false,
-  "main": "dist/popup.js",
+  "main": "dist/js/popup.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
