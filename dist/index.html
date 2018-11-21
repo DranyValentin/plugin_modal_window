@@ -9,9 +9,35 @@
   <body>
   	<a id='btnShowModal' href='#' title="Show modal window">Show modal window</a>
   	<script type="module">
-  		import Popup from "./js/index.js"
+  		import Popup from "./js/popup.js"
 
   		const popup = new Popup()
+
+      console.log(popup)
+
+      popup.create({scrollBarBosdy: false})
+          .add({
+              name: 'h1', 
+              text: "Hello! I'm header"
+          })
+          .add({
+              name: 'p', 
+              text: "This feature is coming soon!"  
+          })
+          .add({
+              name: 'button', 
+              text: "Ok",
+              type: 'button',
+              id: "btn_popup_ok",
+              class: "popup_btn_ok"  
+          })
+         .addButtonClose()
+         .addActionToButton('btn_popup_ok', () => {
+              console.log(popup)
+         })
+         //.show()
+
+      document.getElementById('btnShowModal').addEventListener('click', popup.show, false)
   	</script>
   </body>
 </html>

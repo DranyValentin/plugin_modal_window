@@ -1,7 +1,10 @@
 export default class Popup {
      constructor(name) {
         let $containerPopup = null, // Container popup
-            $popup = null           // Popup
+            $popup = null,          // Popup
+            settings = {
+                scrollBarBody: true     //Does srollBar on body show?
+            }
 
         let createElement = (options) => {
             if ( typeof options != 'object' || !options )
@@ -50,9 +53,17 @@ export default class Popup {
 
         /*
         * Create container and popup window
+        *
+        * @param object options - by defualt keys
+        *   boolean scrollBarBody: true
         */
-        this.create = () => {
+        this.create = options => {
             let $wrapperPopup = null
+
+            if ( typeof options === 'object' )
+                for ( let prop in options )
+                    if ( prop in settings )
+                        settings[prop] = options[prop]
 
             $containerPopup = document.createElement('div')
             $containerPopup.classList.add('container_popup')
@@ -97,9 +108,14 @@ export default class Popup {
 
         /*
         * Show popup on window
+        *
         */
         this.show = () => {
             document.body.appendChild($containerPopup)
+
+            if ( settings.scrollBarBody )
+                return
+
             document.body.style.overflow = 'hidden'
             document.body.style.paddingRight = '18px'
         }
@@ -123,35 +139,3 @@ export default class Popup {
         }
     }
 }
-
-
-/* 
-//Example
-
-const popup = new Popup()
-console.log(popup)
-
-popup.create()
-    .add({
-        name: 'h1', 
-        text: "Hello! I'm header"
-    })
-    .add({
-        name: 'p', 
-        text: "This feature is coming soon!"  
-    })
-    .add({
-        name: 'button', 
-        text: "Ok",
-        type: 'button',
-        id: "btn_popup_ok",
-        class: "popup_btn_ok"  
-    })
-   .addButtonClose()
-   .addActionToButton('btn_popup_ok', () => {
-        console.log(popup)
-   })
-   //.show()
-
-document.getElementById('btnShowModal').addEventListener('click', popup.show, false)
-*/
