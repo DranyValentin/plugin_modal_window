@@ -37,7 +37,7 @@ export class Popup {
                 $element = document.createElement(tagName)
 
             if ( _id )              $element.id = _id
-            if ( _class )           $element.classList.add(_class)
+            if ( _class )           $element.className = _class
             if ( text )             $element.textContent = text
             if ( src )              $element.src = src
             if ( href )             $element.href = href
@@ -126,6 +126,9 @@ export class Popup {
     }
 }
 
+
+/* Example
+
 const popup = new Popup()
 console.log(popup)
 
@@ -152,3 +155,4 @@ popup.create()
    //.show()
 
 document.getElementById('btnShowModal').addEventListener('click', popup.show, false)
+*/
