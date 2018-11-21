@@ -64,7 +64,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "4365330cb63526f6b715";
+/******/ 	var hotCurrentHash = "7ad35c27315f490c2a24";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -794,14 +794,14 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/index.js":
+/***/ "./src/popup.js":
 /*!**********************!*\
-  !*** ./src/index.js ***!
+  !*** ./src/popup.js ***!
   \**********************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "js/index.js";
+module.exports = __webpack_require__.p + "js/popup.js";
 
 /***/ }),
 
@@ -818,12 +818,12 @@ module.exports = __webpack_require__.p + "css/style.css";
 
 /***/ 0:
 /*!**************************************************!*\
-  !*** multi ./src/index.js ./src/scss/style.scss ***!
+  !*** multi ./src/popup.js ./src/scss/style.scss ***!
   \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./src/index.js */"./src/index.js");
+__webpack_require__(/*! ./src/popup.js */"./src/popup.js");
 module.exports = __webpack_require__(/*! ./src/scss/style.scss */"./src/scss/style.scss");
 
 
