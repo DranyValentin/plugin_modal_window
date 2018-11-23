@@ -10,7 +10,7 @@ export default class Popup {
         let createElement = (options) => {
             if ( typeof options != 'object' || !options )
                 options = {
-                    name: 'p', 
+                    tagName: 'p', 
                     id: '', 
                     class: '', 
                     text: "",
@@ -19,35 +19,44 @@ export default class Popup {
                     alt: "",
                     title: "",
                     type: "",
-                    maxlength: "",
-                    placeholder: ""
+                    name: "", 
+                    maxLength: "",
+                    placeholder: "",
+                    autocomplete: "on",
+                    disabled: "false"
                 }
 
             let {
-                    name: tagName, 
-                    id: _id = '',
+                    tagName, 
+                    id: _id =       '',
                     class: _class = '',
                     text,
-                    src         = '',
-                    href        = '',
-                    alt         = '',
-                    title       = '',
-                    type        = "",
-                    maxlength   = "",
-                    placeholder = ""
+                    src           = '',
+                    href          = '',
+                    alt           = '',
+                    title         = '',
+                    type          = "",
+                    name          = "",
+                    maxLength     = "",
+                    placeholder   = "",
+                    autocomplete  = 'on',
+                    disabled      = "false"
                 } = options,
                 $element = document.createElement(tagName)
 
-            if ( _id )              $element.id = _id
-            if ( _class )           $element.className = _class
-            if ( text )             $element.textContent = text
-            if ( src )              $element.src = src
-            if ( href )             $element.href = href
-            if ( alt )              $element.alt = alt
-            if ( title )            $element.title = title
-            if ( type )             $element.type = type
-            if ( maxlength )        $element.maxlength = maxlength
-            if ( placeholder )      $element.placeholder = placeholder
+            if ( _id )                                  $element.id = _id
+            if ( _class )                               $element.className = _class
+            if ( text )                                 $element.textContent = text
+            if ( src )                                  $element.src = src
+            if ( href )                                 $element.href = href
+            if ( alt )                                  $element.alt = alt
+            if ( title )                                $element.title = title
+            if ( type )                                 $element.type = type
+            if ( name )                                 $element.name = name
+            if ( maxLength )                            $element.maxlength = maxLength
+            if ( placeholder )                          $element.placeholder = placeholder
+            if ( autocomplete && autocomplete != 'on' ) $element.autocomplete = autocomplete
+            if ( disabled && disabled != 'false' )      $element.disabled = disabled
 
             return $element
         }
