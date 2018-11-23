@@ -3,7 +3,8 @@ export default class Popup {
         let $containerPopup = null, // Container popup
             $popup = null,          // Popup
             settings = {
-                scrollBarBody: true     //Does srollBar on body show?
+                scrollBarBody: true,    // Does srollBar on body show?
+                classPopup: 'popup'     // Add class to node Popup
             }
 
         let createElement = (options) => {
@@ -68,7 +69,7 @@ export default class Popup {
             $containerPopup = document.createElement('div')
             $containerPopup.classList.add('container_popup')
             $popup = document.createElement('div')
-            $popup.classList.add('popup')
+            $popup.className = settings.classPopup
             $containerPopup.appendChild($popup)
                     
             return this    
@@ -81,9 +82,16 @@ export default class Popup {
         * @return Popup
         */
         this.add = options => {
-            const $header = createElement(options)
+            const $element = createElement(options)
 
-            $popup.appendChild($header)
+            if ( typeof options.wrapper == 'string' ) {
+                const $wrapper = $popup.querySelector(`#${options.wrapper}`)
+                
+                if ( $wrapper ) 
+                    $wrapper.appendChild($element)
+            }
+            else 
+                $popup.appendChild($element)
 
             return this
         }
@@ -104,6 +112,23 @@ export default class Popup {
             $popup.appendChild($div)
                     
             return this   
+        }
+
+        /*
+        * Add action 'click' to the element
+        *
+        * @param number idButton
+        * @param function action
+        *
+        * @return Popup
+        */
+        this.addActionToButton = (idButton, action) => {
+            if ( typeof idButton != 'string' && typeof action != 'function' )
+                return
+
+            $popup.querySelector(`#${idButton}`).addEventListener('click', action)
+
+            return this
         }
 
         /*
@@ -129,13 +154,6 @@ export default class Popup {
             document.body.removeChild($containerPopup)
         }
 
-        this.addActionToButton = (idButton, action) => {
-            if ( typeof idButton != 'string' && typeof action != 'function' )
-                return
 
-            $popup.querySelector(`#${idButton}`).addEventListener('click', action)
-
-            return this
-        }
     }
 }
