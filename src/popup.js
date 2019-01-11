@@ -8,55 +8,35 @@ export default class Popup {
             }
 
         let createElement = (options) => {
-            if ( typeof options != 'object' || !options )
-                options = {
-                    tagName: 'p', 
-                    id: '', 
-                    class: '', 
-                    text: "",
-                    src: "",
-                    href: "",
-                    alt: "",
-                    title: "",
-                    type: "",
-                    name: "", 
-                    maxLength: "",
-                    placeholder: "",
-                    autocomplete: "on",
-                    disabled: "false"
+            if ( typeof options != 'object' || !options ) 
+                options = {tagName: 'span'}
+
+            let $element = null
+
+            if ( options.tagName == 'svg' || options.tagName == 'path' )
+                $element = document.createElementNS('http://www.w3.org/2000/svg', options.tagName)
+            else
+                $element = document.createElement(options.tagName)
+
+            for ( let prop in options ) {
+                if ( prop === 'wrapper' || prop === 'tagName' || prop === 'xmlns' )
+                    continue
+
+                if ( prop === 'text' ) {
+                    $element.textContent = options[prop]
+                    continue
                 }
 
-            let {
-                    tagName, 
-                    id: _id =       '',
-                    class: _class = '',
-                    text,
-                    src           = '',
-                    href          = '',
-                    alt           = '',
-                    title         = '',
-                    type          = "",
-                    name          = "",
-                    maxLength     = "",
-                    placeholder   = "",
-                    autocomplete  = 'on',
-                    disabled      = "false"
-                } = options,
-                $element = document.createElement(tagName)
+                if ( prop === 'checked' ) {
+                    $element.checked = options[prop]
+                    continue
+                }                
 
-            if ( _id )                                  $element.id = _id
-            if ( _class )                               $element.className = _class
-            if ( text )                                 $element.textContent = text
-            if ( src )                                  $element.src = src
-            if ( href )                                 $element.href = href
-            if ( alt )                                  $element.alt = alt
-            if ( title )                                $element.title = title
-            if ( type )                                 $element.type = type
-            if ( name )                                 $element.name = name
-            if ( maxLength )                            $element.maxlength = maxLength
-            if ( placeholder )                          $element.placeholder = placeholder
-            if ( autocomplete && autocomplete != 'on' ) $element.autocomplete = autocomplete
-            if ( disabled && disabled != 'false' )      $element.disabled = disabled
+                if ( options.tagName === 'svg' || options.tagName == 'path' )
+                    $element.setAttributeNS(null, prop, options[prop])
+                else
+                    $element.setAttribute(prop, options[prop])
+            }
 
             return $element
         }
@@ -162,7 +142,5 @@ export default class Popup {
             document.body.style.paddingRight = ''
             document.body.removeChild($containerPopup)
         }
-
-
     }
 }
