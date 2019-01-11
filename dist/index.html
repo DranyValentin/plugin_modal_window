@@ -17,33 +17,34 @@
 
       popup.create({scrollBarBosdy: false})
           .add({
-              name: 'h1', 
+              tagName: 'h1', 
               text: "Hello! I'm header"
           })
           .add({
-              name: 'p', 
+              tagName: 'p', 
               text: "This feature is coming soon!"  
           })
           .add({
-              name: 'button', 
+              tagName: 'button', 
               text: "Ok",
               type: 'button',
               id: "btn_popup_ok",
               class: "popup_btn_ok"  
           })
          .add({
-              name: 'div', 
+              tagName: 'div', 
               id: "popup_wrap_1",
           })
          .add({
-              name: 'div', 
+              tagName: 'div', 
               id: "popup_wrap_2",
               wrapper: 'popup_wrap_1'
           })
           .add({
-              name: 'p', 
+              tagName: 'p', 
               text: "Hello",
-              wrapper: 'popup_wrap_2'
+              wrapper: 'popup_wrap_2',
+              style: 'font-size: 50px;'
           }) 
          .addButtonClose()
          .addActionToButton('btn_popup_ok', () => {
